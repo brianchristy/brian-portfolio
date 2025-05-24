@@ -7,7 +7,7 @@ const About = () => {
     { name: 'JavaScript', percentage: 85 },
     { name: 'React', percentage: 80 },
     { name: 'Python', percentage: 95 },
-    { name: 'C/C++', percentage: 90 },
+    { name: 'C', percentage: 90 },
     { name: 'SQL', percentage: 90 },
     { name: 'Git/GitHub', percentage: 85 },
     { name: 'Machine Learning', percentage: 75 }
