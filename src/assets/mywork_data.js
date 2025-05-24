@@ -31,7 +31,7 @@ const mywork_data = [
         repo_link:"https://github.com/brianchristy/sms-spam-detection"
     },
     {
-        w_name:"Others",
+        w_name:"Blockchain",
         w_title:"Crowd Funding DAPP",
         w_img:project5_img,
         repo_link:"https://github.com/brianchristy/backend-solidity"

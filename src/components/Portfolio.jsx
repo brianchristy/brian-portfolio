@@ -5,7 +5,7 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [projects, setProjects] = useState(myworkData);
 
-  const filters = ['all', 'Web design', 'Open source contribution', 'AI-ML', 'Others'];
+  const filters = ['all', 'Web design', 'Open source contribution', 'AI-ML', 'Blockchain', 'Others'];
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
