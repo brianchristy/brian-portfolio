@@ -3,9 +3,17 @@ import userIcon from '../assets/user_icon.svg';
 import mailIcon from '../assets/mail_icon.svg';
 import callIcon from '../assets/call_icon.svg';
 import locationIcon from '../assets/location_icon.svg';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [recaptchaValue, setRecaptchaValue] = useState('');
+  const [formErrors, setFormErrors] = useState({
     name: '',
     email: '',
     subject: '',
@@ -24,6 +32,29 @@ const Contact = () => {
       ...prevData,
       [name]: value
     }));
+    validateField(name, value);
+  };
+
+  const validateField = (fieldName, value) => {
+    const errors = { ...formErrors };
+    switch(fieldName) {
+      case 'name':
+        errors.name = value.length < 2 ? 'Name must be at least 2 characters' : '';
+        break;
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        errors.email = !emailRegex.test(value) ? 'Please enter a valid email address' : '';
+        break;
+      case 'subject':
+        errors.subject = value.length < 5 ? 'Subject must be at least 5 characters' : '';
+        break;
+      case 'message':
+        errors.message = value.length < 20 ? 'Message must be at least 20 characters' : '';
+        break;
+      default:
+        break;
+    }
+    setFormErrors(errors);
   };
 
   const handleSubmit = (e) => {
@@ -33,6 +64,27 @@ const Contact = () => {
     if (!formData.name || !formData.email || !formData.message) {
       setFormStatus({
         message: 'Please fill in all required fields.',
+        isError: true,
+        isSubmitted: false
+      });
+      return;
+    }
+
+    // Check if there are any field errors
+    const hasErrors = Object.values(formErrors).some(error => error !== '');
+    if (hasErrors) {
+      setFormStatus({
+        message: 'Please fix the highlighted errors.',
+        isError: true,
+        isSubmitted: false
+      });
+      return;
+    }
+
+    // Check if reCAPTCHA is verified
+    if (!recaptchaValue) {
+      setFormStatus({
+        message: 'Please verify you are not a robot.',
         isError: true,
         isSubmitted: false
       });
@@ -80,6 +132,7 @@ const Contact = () => {
         subject: '',
         message: ''
       });
+      setRecaptchaValue('');
     })
     .catch(error => {
       // Error
@@ -99,6 +152,12 @@ const Contact = () => {
         
         <div className="contact-content">
           <div className="contact-info">
+            {/* Add reCAPTCHA */}
+            <ReCAPTCHA
+              sitekey="YOUR_RECAPTCHA_SITE_KEY"
+              onChange={setRecaptchaValue}
+              theme="dark"
+            />
             <h3>Let's talk about everything!</h3>
             <p>
               Don't like forms? Send me an email or give me a call. I'd love to hear from you!
