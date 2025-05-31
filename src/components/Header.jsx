@@ -35,24 +35,45 @@ const Header = () => {
     { id: 'contact', label: 'Contact' }
   ];
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
       <div className="container flex-between">
-        <a href="#home" className="logo">
+        <button 
+          className="logo" 
+          onClick={() => scrollToSection('home')}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
           <img src={logo} alt="Brian's Portfolio" />
-        </a>
+        </button>
 
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <ul className="nav-links">
             {navLinks.map((link) => (
               <li key={link.id} className="nav-item">
-                <a 
-                  href={`#${link.id}`} 
+                <button 
                   className="nav-link"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => scrollToSection(link.id)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'inherit',
+                    font: 'inherit',
+                    cursor: 'pointer',
+                    padding: 0,
+                    textAlign: 'left',
+                    width: '100%'
+                  }}
                 >
                   {link.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
