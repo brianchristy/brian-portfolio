@@ -10,7 +10,7 @@ const About = () => {
     { name: 'C', percentage: 85 },
     { name: 'SQL', percentage: 90 },
     { name: 'Git/GitHub', percentage: 85 },
-    { name: 'Machine Learning', percentage: 70 }
+    { name: 'Machine Learning', percentage: 60 }
   ];
 
   return (
