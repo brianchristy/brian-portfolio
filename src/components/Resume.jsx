@@ -3,36 +3,6 @@ import React, { useEffect, useRef } from 'react';
 const Resume = ({ onClose }) => {
   const resumeUrl = '/resume.pdf';
   const iframeRef = useRef(null);
-  
-  // Prevent context menu (right-click)
-  useEffect(() => {
-    const preventContextMenu = (e) => {
-      e.preventDefault();
-      return false;
-    };
-    
-    document.addEventListener('contextmenu', preventContextMenu);
-    
-    // Prevent keyboard shortcuts
-    const preventShortcuts = (e) => {
-      // Disable Ctrl+C, Ctrl+A, Ctrl+S, etc.
-      if ((e.ctrlKey || e.metaKey) && 
-          (e.key === 'c' || e.key === 'C' || 
-           e.key === 'a' || e.key === 'A' ||
-           e.key === 's' || e.key === 'S' ||
-           e.key === 'p' || e.key === 'P')) {
-        e.preventDefault();
-        return false;
-      }
-    };
-    
-    document.addEventListener('keydown', preventShortcuts);
-    
-    return () => {
-      document.removeEventListener('contextmenu', preventContextMenu);
-      document.removeEventListener('keydown', preventShortcuts);
-    };
-  }, []);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -76,17 +46,12 @@ const Resume = ({ onClose }) => {
       <div className="resume__pdf-container">
         <iframe 
           ref={iframeRef}
-          src={`${resumeUrl}#toolbar=0&navpanes=0&view=FitH`} 
+          src={`${resumeUrl}#toolbar=0&navpanes=0`} 
           title="Resume PDF"
           className="resume__pdf"
           width="100%"
           height="100%"
-          style={{ 
-            border: 'none',
-            display: 'block',
-            backgroundColor: 'white'
-          }}
-          loading="eager"
+          style={{ border: 'none' }}
         ></iframe>
       </div>
     </div>

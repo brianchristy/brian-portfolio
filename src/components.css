@@ -833,7 +833,7 @@
 .resume-modal-content {
   position: relative;
   z-index: 2;
-  width: 75%;
+  width: 95%;
   height: 95vh;
   max-width: 1500px;
   background: var(--bg-secondary);
@@ -875,7 +875,7 @@
 .resume-content {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden; /* Changed from overflow-y: auto */
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   padding: 0;
@@ -883,37 +883,14 @@
   position: relative;
 }
 
-/* Prevent text selection */
-.resume-content,
-.resume-content * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+/* Hide all scrollbars in the modal */
+.resume-modal * {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
 }
 
-/* Make sure PDF is visible and interactive */
-.resume__pdf {
-  pointer-events: auto;
-}
-
-/* Custom scrollbar for the resume content */
-.resume-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.resume-content::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
-}
-
-.resume-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-.resume-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+.resume-modal *::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 .resume__container {
@@ -933,10 +910,28 @@
 .resume__pdf-container {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden; /* Changed from auto to hidden */
   background: #f5f5f5;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume__pdf {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border: none;
+  display: block;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+ Opera */
+.resume__pdf-container::-webkit-scrollbar {
+  display: none;
 }
 
 .resume__pdf {
