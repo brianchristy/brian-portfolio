@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import profileImg from '../assets/profile_pic.JPEG';
-import themePattern from '../assets/theme_pattern.svg';
+import themePattern from '../assets/theme_pattern.svg'
+import Resume from './Resume';
+
 
 const Hero = () => {
+  const [showResume, setShowResume] = useState(false);
+
+  const toggleResume = () => {
+    setShowResume(!showResume);
+    // Toggle body scroll when modal is open/closed
+    document.body.style.overflow = showResume ? 'auto' : 'hidden';
+  };
   return (
     <section id="home" className="hero section">
       <div className="container">
@@ -20,8 +30,29 @@ const Hero = () => {
             </p>
             <div className="hero-btns">
               <a href="#portfolio" className="btn">View My Work</a>
-              <a href="#contact" className="btn btn-outline">Contact Me</a>
+              <button onClick={toggleResume} className="btn btn-outline">View My Resume</button>
             </div>
+            
+            <AnimatePresence>
+              {showResume && (
+                <div className="resume-modal">
+                  <div className="resume-modal-overlay" onClick={toggleResume}></div>
+                  <motion.div 
+                    className="resume-modal-content"
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button className="resume-close-btn" onClick={toggleResume}>
+                      &times;
+                    </button>
+                    <Resume onClose={toggleResume} />
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
           </div>
           <div className="hero-image">
             <div className="image-wrapper">
