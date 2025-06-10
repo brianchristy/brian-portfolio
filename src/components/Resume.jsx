@@ -1,8 +1,19 @@
 import React, { useEffect, useRef } from 'react';
+import { FaDownload } from 'react-icons/fa';
 
 const Resume = ({ onClose }) => {
   const resumeUrl = '/resume.pdf';
   const iframeRef = useRef(null);
+
+  // Handle download button click
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Brian_Christopher_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -43,6 +54,14 @@ const Resume = ({ onClose }) => {
 
   return (
     <div className="resume-content">
+      <div className="resume-actions">
+        <h2 className="resume-title">My Resume</h2>
+        <div className="resume-actions-group">
+          <button onClick={handleDownload} className="resume-download-btn">
+            <FaDownload className="download-icon" /> Download PDF
+          </button>
+        </div>
+      </div>
       <div className="resume__pdf-container">
         <iframe 
           ref={iframeRef}

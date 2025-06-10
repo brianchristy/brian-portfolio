@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import myworkData from '../assets/mywork_data';
 
-const Portfolio = () => {
+const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [projects, setProjects] = useState(myworkData);
 
@@ -23,11 +23,11 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="portfolio section">
+    <section id="projects" className="projects section">
       <div className="container">
-        <h2 className="section-title">My Portfolio</h2>
+        <h2 className="section-title">My Projects</h2>
         
-        <div className="portfolio-filters">
+        <div className="projects-filters">
           {filters.map((filter, index) => (
             <button 
               key={index}
@@ -39,18 +39,18 @@ const Portfolio = () => {
           ))}
         </div>
         
-        <div className="portfolio-grid grid">
+        <div className="projects-grid grid">
           {projects.map((project, index) => (
-            <a href={project.repo_link} className="portfolio-item-link" target="_blank" rel="noopener noreferrer" key={index}>
-              <div className="portfolio-item card">
-                <div className="portfolio-img">
+            <a href={project.repo_link} className="projects-item-link" target="_blank" rel="noopener noreferrer" key={index}>
+              <div className="projects-item card">
+                <div className="projects-img">
                   <img src={project.w_img} alt={`Project ${project.w_no}`} />
-                  <div className="portfolio-overlay flex-center">
+                  <div className="projects-overlay flex-center">
                   </div>
                 </div>
-                <div className="portfolio-content">
-                  <h3 className="portfolio-title">{project.w_title}</h3>
-                  <p className="portfolio-category">{project.w_name}</p>
+                <div className="projects-content">
+                  <h3 className="projects-title">{project.w_title}</h3>
+                  <p className="projects-category">{project.w_name}</p>
                 </div>
               </div>
             </a>
@@ -61,4 +61,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Projects;

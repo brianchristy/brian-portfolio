@@ -29,7 +29,7 @@ const Hero = () => {
               I blend technical skills with creative problem-solving to build innovative digital solutions that deliver real value.
             </p>
             <div className="hero-btns">
-              <a href="#portfolio" className="btn">View My Work</a>
+              <a href="#projects" className="btn">View My Projects</a>
               <button onClick={toggleResume} className="btn btn-outline">View My Resume</button>
             </div>
             

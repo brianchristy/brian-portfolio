@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Portfolio from "./components/Portfolio";
+import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
@@ -39,7 +39,7 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Portfolio />
+        <Projects />
         <Achievements />
         <Certifications />
         <Contact />
