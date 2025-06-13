@@ -353,17 +353,22 @@ body.resume-modal-open .header {
 .hero-image {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   position: relative;
-  padding-right: 40px;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 450px;
+  max-width: 350px;
+  margin: 0 auto;
   z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-img {
@@ -426,7 +431,9 @@ body.resume-modal-open .header {
   }
   
   .hero-image {
-    margin-top: 30px;
+    margin: 30px auto 0;
+    justify-content: center;
+    padding: 0;
   }
   
   .profile-img {
