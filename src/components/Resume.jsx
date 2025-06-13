@@ -15,12 +15,14 @@ const Resume = ({ onClose }) => {
     document.body.removeChild(link);
   };
 
-  // Prevent background scrolling when modal is open
+  // Prevent background scrolling and update body class when modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('resume-modal-open');
     
     return () => {
       document.body.style.overflow = 'auto';
+      document.body.classList.remove('resume-modal-open');
     };
   }, []);
 

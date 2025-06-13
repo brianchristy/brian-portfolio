@@ -29,7 +29,25 @@ const Hero = () => {
               I blend technical skills with creative problem-solving to build innovative digital solutions that deliver real value.
             </p>
             <div className="hero-btns">
-              <a href="#projects" className="btn">View My Projects</a>
+              <button 
+                className="btn" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const projectsSection = document.getElementById('projects');
+                  if (projectsSection) {
+                    const headerOffset = 80; // Adjust this value based on your header height
+                    const elementPosition = projectsSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
+              >
+                View My Projects
+              </button>
               <button onClick={toggleResume} className="btn btn-outline">View My Resume</button>
             </div>
             
@@ -55,10 +73,11 @@ const Hero = () => {
             </AnimatePresence>
           </div>
           <div className="hero-image">
-            <div className="image-wrapper">
-              <img src={profileImg} alt="Brian's Profile" className="profile-img" />
-              <img src={themePattern} alt="" className="pattern" />
-            </div>
+            <a href="https://www.linkedin.com/in/brianchris1708" target="_blank" rel="noopener noreferrer">
+              <div className="image-wrapper">
+                <img src={profileImg} alt="Brian's Profile" className="profile-img" />
+              </div>
+            </a>
           </div>
         </div>
       </div>

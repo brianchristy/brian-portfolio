@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -8,8 +9,9 @@ import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import "./index.css";
 
-function App() {
+const AppContent = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -47,6 +49,14 @@ function App() {
       <Footer />
       <ScrollToTop />
     </div>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

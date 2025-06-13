@@ -4,13 +4,14 @@ import aboutProfile from '../assets/about_pic.JPEG';
 const About = () => {
   const skills = [
     { name: 'HTML/CSS', percentage: 90 },
-    { name: 'JavaScript', percentage: 80 },
-    { name: 'React', percentage: 75 },
+    { name: 'JavaScript', percentage: 70 },
+    { name: 'React', percentage: 65 },
     { name: 'Python', percentage: 90 },
     { name: 'C', percentage: 85 },
+    { name: 'Java', percentage: 75 },
     { name: 'SQL', percentage: 90 },
     { name: 'Git/GitHub', percentage: 85 },
-    { name: 'Machine Learning', percentage: 60 }
+    { name: 'Machine Learning', percentage: 50 }
   ];
 
   return (

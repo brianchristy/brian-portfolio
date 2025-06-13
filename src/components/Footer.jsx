@@ -4,20 +4,32 @@ import footerLogo from '../assets/logo.png';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+  
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src={footerLogo} alt="Brian's Portfolio" />
+            <a href="#home" onClick={(e) => scrollToSection(e, 'home')}>
+              <img src={footerLogo} alt="Brian's Portfolio" />
+            </a>
           </div>
           
           <div className="footer-links">
             <ul className="footer-nav">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a></li>
+              <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a></li>
+              <li><a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Projects</a></li>
+              <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
             </ul>
           </div>
           

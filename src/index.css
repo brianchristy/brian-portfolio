@@ -1,15 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --primary-color: #8a2be2;
-  --secondary-color: #6a0dad;
-  --accent-color: #9370db;
-  --background-dark: #121212;
-  --background-light: #1e1e1e;
-  --text-primary: #ffffff;
-  --text-secondary: #b3b3b3;
-  --text-tertiary: #808080;
+  /* Light theme - Rich Cream & Earth Tones */
+  --primary-color: #7a6348;      /* Rich Brown */
+  --primary-light: #8f7a62;     /* Lighter Rich Brown */
+  --primary-dark: #5f4e39;      /* Darker Rich Brown */
+  --secondary-color: #8a6d52;    /* Muted Rich Brown */
+  --accent-color: #a87d4b;      /* Warm Accent */
+  --background: #f0e6d2;         /* Rich Cream */
+  --background-secondary: #e0d6c2; /* Slightly Darker Rich Cream */
+  --text-primary: #2d2418;       /* Dark Rich Brown */
+  --text-secondary: #4f4230;     /* Medium Rich Brown */
+  --text-tertiary: #726a5c;     /* Lighter Rich Brown */
+  --border-color: #c4b9a5;      /* Warm Gray */
+  --card-bg: rgba(245, 239, 227, 0.9);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  --header-bg: rgba(240, 230, 210, 0.97);
+  --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --nav-hover: rgba(122, 99, 72, 0.12);
+  --nav-active: rgba(122, 99, 72, 0.18);
   --transition: all 0.3s ease;
+  
+  /* Contact icons in light theme */
+  --contact-icon-filter: brightness(0) saturate(100%) invert(8%) sepia(8%) saturate(3000%) hue-rotate(350deg) brightness(90%) contrast(90%);
+
+}
+
+/* Dark theme variables - will be applied when .dark-theme class is present */
+.dark-theme {
+  --primary-color: #8a2be2;
+  --primary-light: #9d4dff;
+  --primary-dark: #6a0dad;
+  --secondary-color: #7c5cff;
+  --accent-color: #9370db;
+  --background: #0a0a12;
+  --background-secondary: #14141f;
+  --text-primary: #f5f5ff;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --border-color: #2d2d3a;
+  --card-bg: #1a1a27;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --header-bg: rgba(26, 26, 39, 0.9);
+  --header-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+  --nav-hover: rgba(138, 43, 226, 0.2);
+  --nav-active: rgba(138, 43, 226, 0.3);
+  
+  /* Contact icons in dark theme */
+  --contact-icon-filter: none;
+}
+
+/* Contact icons styling */
+.contact-icon img {
+  width: 20px;
+  height: 20px;
+  filter: var(--contact-icon-filter);
+  transition: filter 0.3s ease;
 }
 
 * {
@@ -19,11 +65,17 @@
   scroll-behavior: smooth;
 }
 
+/* Prevent flash of unstyled content */
+body:not(.theme-initialized) {
+  visibility: hidden;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--background-dark);
+  background-color: var(--background);
   color: var(--text-primary);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, visibility 0s;
 }
 
 a {
@@ -88,6 +140,37 @@ ul {
 .btn-outline {
   background: transparent;
   border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Theme transition for all elements */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  margin-left: 10px;
+}
+
+.theme-toggle:hover {
+  background: var(--background-secondary);
+  transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
 }
 
 .btn-outline:hover {
@@ -95,11 +178,12 @@ ul {
 }
 
 .card {
-  background: var(--background-light);
+  background: var(--card-bg);
   border-radius: 10px;
   overflow: hidden;
   transition: var(--transition);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
 }
 
 .card:hover {
@@ -131,6 +215,158 @@ ul {
 
 .text-center {
   text-align: center;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--header-shadow);
+  transition: inherit;
+}
+
+.header-scrolled {
+  padding: 0.5rem 0;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item .nav-link {
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.nav-item .nav-link:hover,
+.nav-item .nav-link:focus {
+  color: var(--primary-color);
+  background: var(--nav-hover);
+  outline: none;
+}
+
+.nav-item .nav-link:active {
+  background: var(--nav-active);
+}
+
+.nav-item .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0.25rem;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-item .nav-link:hover::after,
+.nav-item .nav-link:focus::after {
+  transform: scaleX(1);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 0;
+  }
+
+  .nav {
+    position: fixed;
+    top: 70px;
+    left: 1rem;
+    right: 1rem;
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .nav.nav-open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-item .nav-link {
+    padding: 0.75rem 1rem;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .nav-item .nav-link::after {
+    display: none;
+  }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.dark-theme .theme-toggle {
+  background: var(--background-secondary);
+  color: var(--primary-light);
+}
+
+.dark-theme .theme-toggle:hover {
+  background: var(--primary-color);
+  color: white;
 }
 
 /* Responsive Design */
