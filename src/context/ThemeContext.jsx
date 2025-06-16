@@ -51,13 +51,6 @@ export const ThemeProvider = ({ children }) => {
     });
   };
 
-  // Add a class to the body to prevent flash of unstyled content
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.body.classList.add('theme-initialized');
-    }
-  }, []);
-
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {children}

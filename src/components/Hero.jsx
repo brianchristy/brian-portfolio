@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import profileImg from '../assets/profile_pic.JPEG';
-import themePattern from '../assets/theme_pattern.svg'
 import Resume from './Resume';
 
 

@@ -45,8 +45,6 @@ const Projects = () => {
               <div className="projects-item card">
                 <div className="projects-img">
                   <img src={project.w_img} alt={`Project ${project.w_no}`} />
-                  <div className="projects-overlay flex-center">
-                  </div>
                 </div>
                 <div className="projects-content">
                   <h3 className="projects-title">{project.w_title}</h3>
