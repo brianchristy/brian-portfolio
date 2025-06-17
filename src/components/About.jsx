@@ -1,5 +1,4 @@
 import React from 'react';
-import AnimatedSection from './AnimatedSection';
 import aboutProfile from '../assets/about_pic.JPEG';
 
 const About = () => {
@@ -16,7 +15,7 @@ const About = () => {
   ];
 
   return (
-    <AnimatedSection id="about" className="about section">
+    <section id="about" className="about section">
       <div className="container">
         <h2 className="section-title">About Me</h2>
         
@@ -76,7 +75,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
 };
 
