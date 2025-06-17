@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AnimatedSection from './AnimatedSection';
 import myworkData from '../assets/mywork_data';
 
 const Projects = () => {
@@ -23,7 +24,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="projects section">
+    <AnimatedSection id="projects" className="projects section">
       <div className="container">
         <h2 className="section-title">My Projects</h2>
         
@@ -55,7 +56,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

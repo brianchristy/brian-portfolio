@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedSection from './AnimatedSection';
 
 const Certifications = () => {
   const certifications = [
@@ -53,7 +54,7 @@ const Certifications = () => {
   ];
 
   return (
-    <section id="certifications" className="certifications section">
+    <AnimatedSection id="certifications" className="certifications section">
       <div className="container">
         <h2 className="section-title">My Certifications</h2>
         
@@ -80,7 +81,7 @@ const Certifications = () => {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

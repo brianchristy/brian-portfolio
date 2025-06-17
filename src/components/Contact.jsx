@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AnimatedSection from './AnimatedSection';
 import userIcon from '../assets/user_icon.svg';
 import mailIcon from '../assets/mail_icon.svg';
 import callIcon from '../assets/call_icon.svg';
@@ -93,7 +94,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact section">
+    <AnimatedSection id="contact" className="contact section">
       <div className="container">
         <h2 className="section-title">Get In Touch</h2>
         
@@ -228,7 +229,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

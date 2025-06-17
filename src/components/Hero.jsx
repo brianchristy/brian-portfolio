@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import profileImg from '../assets/profile_pic.JPEG';
+import AnimatedSection from './AnimatedSection';
 import Resume from './Resume';
 
 
@@ -13,7 +14,7 @@ const Hero = () => {
     document.body.style.overflow = showResume ? 'auto' : 'hidden';
   };
   return (
-    <section id="home" className="hero section">
+    <AnimatedSection id="home" className="hero section">
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
@@ -80,7 +81,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

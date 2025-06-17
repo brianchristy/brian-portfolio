@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedSection from './AnimatedSection';
 
 const Achievements = () => {
   const achievements = [
@@ -13,7 +14,7 @@ const Achievements = () => {
   ];
 
   return (
-    <section id="achievements" className="achievements section">
+    <AnimatedSection id="achievements" className="achievements section">
       <div className="container">
         <h2 className="section-title">Achievements</h2>
         
@@ -40,7 +41,7 @@ const Achievements = () => {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 
